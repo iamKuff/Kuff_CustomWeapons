@@ -1,0 +1,121 @@
+using {/Fortnite.com/Devices}
+using {/Fortnite.com/UI}
+using {/Fortnite.com/Game}
+using {/Fortnite.com/Characters}
+using {/Fortnite.com/Playspaces}
+using {/Verse.org/Simulation}
+using {/Verse.org/Random}
+using {/UnrealEngine.com/Temporary/Diagnostics}
+using {/UnrealEngine.com/Temporary/UI}
+using {/UnrealEngine.com/Temporary/SpatialMath}
+
+kuff_custom_weapons := class(creative_device):
+    @editable
+    ItemDetector1:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector2:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector3:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector4:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector5:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector6:conditional_button_device = conditional_button_device{}
+
+    @editable
+    ItemDetector7:conditional_button_device = conditional_button_device{}
+
+    @editable
+    Powerup1:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup2:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup3:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup4:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup5:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup6:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    Powerup7:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    @editable
+    PowerupClear:visual_effect_powerup_device = visual_effect_powerup_device{}
+
+    OnBegin<override>()<suspends>:void=
+        spawn:
+            CheckForItem()
+    
+    CheckForItem()<suspends>:void=
+        loop:
+            Sleep(0.5)
+            AllPlayers := GetPlayspace().GetPlayers()
+            for(Player:AllPlayers):
+                if(IsAgent := agent[Player]):
+                    if(ItemDetector1.IsHoldingItem[IsAgent]):
+                        ActivatePowerup1(IsAgent)
+                    else:
+                        if(ItemDetector2.IsHoldingItem[IsAgent]):
+                            ActivatePowerup2(IsAgent)
+                        else:
+                            if(ItemDetector3.IsHoldingItem[IsAgent]):
+                                ActivatePowerup3(IsAgent)
+                            else:
+                                if(ItemDetector4.IsHoldingItem[IsAgent]):
+                                    ActivatePowerup4(IsAgent)
+                                else:
+                                    if(ItemDetector5.IsHoldingItem[IsAgent]):
+                                        ActivatePowerup5(IsAgent)
+                                    else:
+                                        if(ItemDetector6.IsHoldingItem[IsAgent]):
+                                            ActivatePowerup6(IsAgent)
+                                        else:
+                                            if(ItemDetector7.IsHoldingItem[IsAgent]):
+                                                ActivatePowerup7(IsAgent)
+                                            else:
+                                                ActivatePowerupClear(IsAgent)
+
+    ActivatePowerup1(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup1.Pickup(Agent)
+
+    ActivatePowerup2(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup2.Pickup(Agent)
+
+    ActivatePowerup3(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup3.Pickup(Agent)
+
+    ActivatePowerup4(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup4.Pickup(Agent)
+
+    ActivatePowerup5(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup5.Pickup(Agent)
+
+    ActivatePowerup6(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup6.Pickup(Agent)
+    
+    ActivatePowerup7(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            Powerup7.Pickup(Agent)
+
+    ActivatePowerupClear(Agent:agent):void=
+        if(FC := Agent.GetFortCharacter[]):
+            PowerupClear.Pickup(Agent)
