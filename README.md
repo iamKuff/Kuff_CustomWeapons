@@ -5,4 +5,6 @@ This Verse code detects, using a conditional button, if you have a certain weapo
 
 Make sure the clear VFX has nothing in the VFX.
 
+ ## NOTE: DOESENT USE ARRAYS AS I CBA!
+
 Contact Kuff#k54 on Discord for help!
